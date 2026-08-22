@@ -1,17 +1,16 @@
-ByYourSide East Africa — final visual polish package
+# ByYourSide East Africa — premium website
 
-Files:
-- index.html — replacement homepage
-- styles.css — complete external stylesheet
-- assets/hero-east-africa.jpg — hero visual
-- assets/service-travel.jpg — travel companionship visual
-- assets/service-mobility.jpg — mobility visual
-- assets/service-medical.jpg — medical travel visual
-- assets/service-personal.jpg — personal assistance visual
-- assets/journey-banner.jpg — emotional journey section visual
-- assets/partner-banner.jpg — partner section visual
-- assets/design-preview.png — visual reference/mockup
+## Files
+- `index.html` — complete homepage
+- `style.css` — premium responsive design
+- `assets/logo.png` — upload the previously approved ByYourSide logo here
 
-Upload index.html, styles.css, and the entire assets folder to the ROOT of the existing GitHub Pages repository.
+## Important
+The inquiry form is already built. Before publishing, replace:
+`REPLACE_WITH_OFFICIAL_WHATSAPP_NUMBER`
+inside `index.html` with the official ByYourSide WhatsApp number in international format (for Uganda, e.g. 2567XXXXXXXX).
 
-WhatsApp: +256 787 612 459
+The site currently uses premium external photography from Unsplash for the visual prototype. You can later replace these with your approved ByYourSide photography by changing the image URLs in `style.css`.
+
+## GitHub
+Upload `index.html`, `style.css`, and the `assets` folder to the root of your existing GitHub Pages repository.

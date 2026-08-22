@@ -6,6 +6,7 @@
 - `assets/logo.png` — upload the previously approved ByYourSide logo here
 
 ## Important
+This version is intentionally styled around the premium ByYourSide reference look: deep green, warm gold, East African travel imagery, trust strip, medical-travel callout, regional service band, and a prominent inquiry workflow.
 The inquiry form is already built. Before publishing, replace:
 `REPLACE_WITH_OFFICIAL_WHATSAPP_NUMBER`
 inside `index.html` with the official ByYourSide WhatsApp number in international format (for Uganda, e.g. 2567XXXXXXXX).

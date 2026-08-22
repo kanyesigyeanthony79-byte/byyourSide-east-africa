@@ -155,3 +155,74 @@ code{font-size:9px}
   .footer-bottom{display:block}
   .footer-bottom span{display:block;margin-top:8px}
 }
+
+
+.empower-section{display:grid;grid-template-columns:1.25fr .75fr;background:#17382f;color:#fff;padding:100px 7vw;gap:7vw;align-items:center}
+.empower-section .section-kicker{color:#d5b57e}
+.empower-copy h2{max-width:760px;margin-bottom:22px}
+.empower-copy>p{max-width:650px;color:rgba(255,255,255,.72)}
+.empower-copy .empower-lead{font-size:24px;line-height:1.4;color:#fff;margin-bottom:14px}
+.empower-quote{border-left:1px solid rgba(213,181,126,.55);padding:15px 0 15px 45px}
+.empower-quote>span{font-family:"Playfair Display",serif;font-size:80px;line-height:.5;color:#d5b57e}
+.empower-quote p{font-family:"Playfair Display",serif;font-size:34px;line-height:1.1;margin:25px 0 12px}
+.empower-quote small{color:rgba(255,255,255,.58);font-size:11px;letter-spacing:.04em}
+.dark-link{color:#fff;margin-top:25px}
+@media(max-width:850px){
+  .empower-section{grid-template-columns:1fr;padding:78px 6vw;gap:45px}
+  .empower-quote{padding-left:25px}
+}
+@media(max-width:520px){
+  .empower-copy .empower-lead{font-size:20px}
+  .empower-quote p{font-size:29px}
+}
+
+
+/* Screenshot-inspired ByYourSide visual refinement */
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);background:#17382f;color:#fff;padding:20px 7vw;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.trust-strip>div{display:grid;grid-template-columns:34px 1fr;column-gap:10px;align-items:center;padding:5px 22px;border-right:1px solid rgba(255,255,255,.13)}
+.trust-strip>div:first-child{padding-left:0}
+.trust-strip>div:last-child{border-right:0}
+.trust-icon{grid-row:span 2;width:32px;height:32px;border:1px solid #d5b57e;border-radius:50%;display:grid;place-items:center;color:#d5b57e;font-size:14px}
+.trust-strip strong{font-size:11px;letter-spacing:.02em}
+.trust-strip small{font-size:8px;color:rgba(255,255,255,.55);line-height:1.35}
+
+.medical-callout{margin:0 7vw 0;display:grid;grid-template-columns:1fr 1fr;min-height:360px;background:#17382f;color:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(18,30,25,.12)}
+.medical-photo{background:url("https://images.unsplash.com/photo-1543248939-ff40856f65d5?auto=format&fit=crop&w=1400&q=88") center/cover}
+.medical-copy{padding:55px 55px;display:flex;flex-direction:column;justify-content:center}
+.medical-copy .section-kicker{color:#d5b57e}
+.medical-copy h2{font-size:clamp(32px,4vw,52px);margin-bottom:15px}
+.medical-copy p{color:rgba(255,255,255,.7);font-size:14px;max-width:520px}
+.medical-copy .btn{align-self:flex-start;margin-top:10px}
+
+.region-band{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:50px;padding:75px 7vw;background:#f6f2e9}
+.region-band h2{margin-bottom:0}
+.region-list{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line)}
+.region-list span{padding:20px 15px;border-right:1px solid var(--line);font-size:12px;font-weight:700;text-align:center}
+
+.mobile-whatsapp{display:none}
+
+@media(max-width:850px){
+  .trust-strip{grid-template-columns:1fr 1fr;padding:14px 6vw}
+  .trust-strip>div{padding:12px 10px}
+  .trust-strip>div:first-child{padding-left:10px}
+  .trust-strip>div:nth-child(2){border-right:0}
+  .trust-strip>div:nth-child(3){border-top:1px solid rgba(255,255,255,.13)}
+  .trust-strip>div:nth-child(4){border-top:1px solid rgba(255,255,255,.13)}
+  .medical-callout{margin:0 6vw;grid-template-columns:1fr}
+  .medical-photo{min-height:260px}
+  .medical-copy{padding:40px 30px}
+  .region-band{grid-template-columns:1fr;padding:65px 6vw}
+  .region-list{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .trust-strip{grid-template-columns:1fr}
+  .trust-strip>div,.trust-strip>div:nth-child(3),.trust-strip>div:nth-child(4){border-right:0;border-top:1px solid rgba(255,255,255,.13)}
+  .trust-strip>div:first-child{border-top:0}
+  .medical-callout{border-radius:8px}
+  .medical-copy{padding:35px 24px}
+  .medical-copy .btn{width:auto}
+  .region-list{grid-template-columns:1fr 1fr}
+  .mobile-whatsapp{position:fixed;display:flex;align-items:center;justify-content:center;gap:7px;left:12px;right:12px;bottom:12px;z-index:100;padding:13px 15px;border-radius:100px;background:#17382f;color:#fff;box-shadow:0 15px 35px rgba(0,0,0,.22);font-size:10px}
+  .mobile-whatsapp span{color:#d5b57e}
+  .mobile-whatsapp b{color:#d5b57e}
+}

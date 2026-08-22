@@ -1,0 +1,8 @@
+Upload these items to the ROOT of the GitHub repository:
+
+index.html
+styles.css
+assets/ (entire folder)
+
+Do not upload the ZIP inside the repository.
+Keep the assets folder name exactly as shown.

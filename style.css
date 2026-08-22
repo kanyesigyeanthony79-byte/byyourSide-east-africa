@@ -170,9 +170,9 @@ h1, h2, h3, h4 {
 .hero-photo {
   aspect-ratio: 4/3;
   border-radius: 12px;
-  background:
-    radial-gradient(circle at 70% 20%, rgba(224,180,92,0.35), transparent 55%),
-    linear-gradient(140deg, #3c5a44 0%, #223d2e 55%, #14261d 100%);
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
   box-shadow: 0 20px 45px rgba(0,0,0,0.35);
 }
 
@@ -223,12 +223,13 @@ h1, h2, h3, h4 {
 .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(22,54,42,0.1); }
 .service-photo {
   height: 130px;
-  background: linear-gradient(135deg, #cbb789, #8fa88f);
+  background-size: cover;
+  background-position: center;
 }
-.photo-companionship { background: linear-gradient(135deg, #e7c988, #b98d4a); }
-.photo-mobility { background: linear-gradient(135deg, #9fb9a6, #4c6e57); }
-.photo-medical { background: linear-gradient(135deg, #c9d8cd, #6f8a76); }
-.photo-personal { background: linear-gradient(135deg, #ecdcb8, #cba55f); }
+.photo-companionship { background-image: url('images/service-companionship.jpg'); }
+.photo-mobility { background-image: url('images/service-mobility.jpg'); }
+.photo-medical { background-image: url('images/service-medical.jpg'); }
+.photo-personal { background-image: url('images/service-personal.jpg'); }
 
 .service-icon {
   display: inline-flex;
@@ -269,9 +270,9 @@ h1, h2, h3, h4 {
 .companionship-copy p { color: rgba(255,255,255,0.8); margin-bottom: 24px; }
 .companionship-photo {
   min-height: 280px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(201,154,60,0.35), transparent 55%),
-    linear-gradient(135deg, #35573f, #0f231a);
+  background-image: url('images/companionship-banner.jpg');
+  background-size: cover;
+  background-position: center;
 }
 @media (max-width: 860px) {
   .companionship-grid { grid-template-columns: 1fr; }
@@ -315,7 +316,11 @@ h1, h2, h3, h4 {
 
 /* ---------- Partner banner ---------- */
 .partner-banner {
-  background: var(--forest-dark);
+  background:
+    linear-gradient(90deg, rgba(14,36,27,0.97) 0%, rgba(14,36,27,0.88) 45%, rgba(14,36,27,0.35) 100%),
+    url('images/partner-banner.jpg');
+  background-size: cover;
+  background-position: center;
   color: #fff;
   padding: 56px 0;
 }

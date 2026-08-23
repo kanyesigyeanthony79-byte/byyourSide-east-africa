@@ -1173,31 +1173,34 @@
           <p style="color: var(--text-muted);">Fill out the inquiry form below, and our concierge team will respond promptly.</p>
         </div>
 
-        <form onsubmit="event.preventDefault(); alert('Thank you for your inquiry. Our team will contact you shortly.');">
+        <form id="inquiryForm">
+          <input type="hidden" name="_subject" value="New Inquiry — ByYourSide East Africa">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-grid">
             <div class="form-group">
               <label>Full Name</label>
-              <input type="text" class="form-control" placeholder="John Doe" required>
+              <input type="text" name="Full Name" class="form-control" placeholder="John Doe" required>
             </div>
 
             <div class="form-group">
               <label>Email Address</label>
-              <input type="email" class="form-control" placeholder="john@example.com" required>
+              <input type="email" name="Email Address" class="form-control" placeholder="john@example.com" required>
             </div>
 
             <div class="form-group">
               <label>WhatsApp / Phone</label>
-              <input type="tel" class="form-control" placeholder="+1 555 000 0000" required>
+              <input type="tel" name="WhatsApp / Phone" class="form-control" placeholder="+1 555 000 0000" required>
             </div>
 
             <div class="form-group">
               <label>Country of Residence</label>
-              <input type="text" class="form-control" placeholder="United States, UK, etc.">
+              <input type="text" name="Country of Residence" class="form-control" placeholder="United States, UK, etc.">
             </div>
 
             <div class="form-group">
               <label>Destination Country</label>
-              <select class="form-control">
+              <select name="Destination Country" class="form-control">
                 <option>Uganda</option>
                 <option>Kenya</option>
                 <option>Rwanda</option>
@@ -1208,17 +1211,17 @@
 
             <div class="form-group">
               <label>Travel Dates</label>
-              <input type="text" class="form-control" placeholder="Approximate dates or month">
+              <input type="text" name="Travel Dates" class="form-control" placeholder="Approximate dates or month">
             </div>
 
             <div class="form-group">
               <label>Number of Travellers</label>
-              <input type="number" class="form-control" min="1" value="1">
+              <input type="number" name="Number of Travellers" class="form-control" min="1" value="1">
             </div>
 
             <div class="form-group">
               <label>Type of Support Needed</label>
-              <select class="form-control">
+              <select name="Type of Support Needed" class="form-control">
                 <option>Travel Companionship</option>
                 <option>Mobility Assistance</option>
                 <option>Personal Assistance</option>
@@ -1231,16 +1234,16 @@
 
             <div class="form-group">
               <label>Preferred Language</label>
-              <input type="text" class="form-control" placeholder="English, French, German, etc.">
+              <input type="text" name="Preferred Language" class="form-control" placeholder="English, French, German, etc.">
             </div>
 
             <div class="form-group full-width">
               <label>Additional Information</label>
-              <textarea class="form-control" placeholder="Tell us more about your travel plans or specific support requirements..."></textarea>
+              <textarea name="Additional Information" class="form-control" placeholder="Tell us more about your travel plans or specific support requirements..."></textarea>
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-gold" style="flex: 1;"><i class="fa-solid fa-paper-plane"></i> SUBMIT INQUIRY</button>
+              <button type="submit" class="btn btn-gold" style="flex: 1;" id="inquirySubmitBtn"><i class="fa-solid fa-paper-plane"></i> SUBMIT INQUIRY</button>
               <a href="https://wa.me/256787612459" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
             </div>
           </div>
@@ -1323,7 +1326,7 @@
           </div>
           <div class="footer-contact-item">
             <i class="fa-solid fa-envelope"></i>
-            <span>info@byyourside.eastafrica</span>
+            <span><a href="mailto:byyoursideeastafrica@gmail.com" style="color:#A0AEC0; text-decoration:none;">byyoursideeastafrica@gmail.com</a></span>
           </div>
           <div class="social-icons">
             <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
@@ -1344,6 +1347,39 @@
     function toggleMenu() {
       const menu = document.getElementById('navMenu');
       menu.classList.toggle('active');
+    }
+
+    const inquiryForm = document.getElementById('inquiryForm');
+    if (inquiryForm) {
+      inquiryForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('inquirySubmitBtn');
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
+
+        fetch('https://formsubmit.co/ajax/byyoursideeastafrica@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(inquiryForm)
+        })
+          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+          .then(function (result) {
+            if (result.ok) {
+              alert('Thank you for your inquiry. Our team will contact you shortly.');
+              inquiryForm.reset();
+            } else {
+              alert('Sorry, something went wrong sending your inquiry. Please reach us directly on WhatsApp at +256 787 612 459.');
+            }
+          })
+          .catch(function () {
+            alert('Sorry, something went wrong sending your inquiry. Please reach us directly on WhatsApp at +256 787 612 459.');
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+          });
+      });
     }
   </script>
 </body>

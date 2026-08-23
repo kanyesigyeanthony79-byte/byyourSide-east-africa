@@ -840,15 +840,87 @@
       font-weight: 300;
     }
 
-    /* Footer */
-    footer {
-      background: var(--primary-dark);
-      color: #FFFFFF;
-      padding: 90px 0 35px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- White Variant Logo for Dark Footer -->
+          <svg class="logo-svg" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(10, 0)">
+              <circle cx="102" cy="14" r="5" fill="#FFFFFF" />
+              <path d="M102,20 C95,20 90,25 90,33 C90,41 102,49 107,54 C105,48 103,38 107,32 C108,28 107,20 118,20 Z" fill="#FFFFFF" />
+              <circle cx="118" cy="14" r="5" fill="#C69214" />
+              <path d="M118,20 C125,20 130,25 130,33 C130,41 118,49 113,54 C115,48 117,38 113,32 C112,28 113,20 118,20 Z" fill="#C69214" />
+              <text x="110" y="58" font-family="'Playfair Display', serif" font-size="16" font-weight="700" fill="#C69214" text-anchor="middle">
+                <tspan fill="#FFFFFF">By</tspan>YourSide
+              </text>
+              <text x="110" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-size="5.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">
+                EAST AFRICA
+              </text>
+              <text x="110" y="71" font-family="'Plus Jakarta Sans', sans-serif" font-size="4" font-weight="600" fill="#C69214" text-anchor="middle" letter-spacing="1">
+                TRAVEL WITH CONFIDENCE
+              </text>
+            </g>
+          </svg>
+          <p class="footer-desc">Premium travel companionship and personal assistance services for international travellers across East Africa.</p>
+        </div>
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 50px;
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#empowerment">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#partners">For Partners</a></li>
+            <li><a href="#inquiry">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Travel Companionship</a></li>
+            <li><a href="#services">Mobility & Assistance</a></li>
+            <li><a href="#services">Medical Travel Support</a></li>
+            <li><a href="#services">Personal Assistance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Kampala, Uganda<br>Serving East Africa</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>+256 787 612 459</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@byyourside.eastafrica</span>
+          </div>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 ByYourSide East Africa. All rights reserved.</span>
+        <span>Travel safe. We're <strong>ByYourSide</strong>.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

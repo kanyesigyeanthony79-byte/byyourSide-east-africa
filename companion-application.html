@@ -525,7 +525,11 @@
             </div>
 
             <!-- Form Start -->
-            <form id="companionForm" enctype="multipart/form-data" novalidate>
+                <form id="companionForm" action="https://formsubmit.co/ajax/byyoursideeastafrica@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
+                    <input type="hidden" name="_subject" value="New ByYourSide Companion Application">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                 
                 <!-- STEP 1: Personal Information -->
                 <div class="form-step active" data-step="1">
@@ -990,12 +994,17 @@
 
                 if (currentStep === 7) {
                     const cvInput = document.getElementById("cvFile");
+                    const certInput = document.getElementById("certFiles");
+                    let totalFileSize = 0;
                     if (cvInput.files.length > 0) {
                         const fileSize = cvInput.files[0].size / 1024 / 1024;
-                        if (fileSize > 5) {
-                            alert("CV File size exceeds 5MB limit.");
-                            isValid = false;
-                        }
+                        totalFileSize += cvInput.files[0].size;
+                        if (fileSize > 5) { alert("CV File size exceeds 5MB limit."); isValid = false; }
+                    }
+                    for (const file of certInput.files) totalFileSize += file.size;
+                    if (totalFileSize / 1024 / 1024 > 10) {
+                        alert("The combined size of your CV and supporting documents must not exceed 10MB.");
+                        isValid = false;
                     }
                 }
 
@@ -1033,9 +1042,10 @@
                 formData.append("Application Status", "NEW");
 
                 try {
-                    const response = await fetch("/api/companion-application", {
+                    const response = await fetch(form.action, {
                         method: "POST",
-                        body: formData
+                        body: formData,
+                        headers: { "Accept": "application/json" }
                     });
 
                     if (response.ok) {
@@ -1045,17 +1055,19 @@
                         successScreen.style.display = "block";
                         window.scrollTo({ top: 100, behavior: "smooth" });
                     } else {
-                        alert("Application submission failed. Please try again.");
+                        let message = "Application submission failed. Please try again.";
+                        try {
+                            const result = await response.json();
+                            if (result.message) message = result.message;
+                        } catch (_) { /* Keep the generic message for non-JSON errors. */ }
+                        alert(message);
                         submitBtn.disabled = false;
                         submitBtn.textContent = "Submit Application";
                     }
                 } catch (err) {
-                    // Fallback simulation mode if local or unlinked to serverless API
-                    form.style.display = "none";
-                    document.querySelector(".progress-bar-wrapper").style.display = "none";
-                    displayAppId.textContent = generatedAppID;
-                    successScreen.style.display = "block";
-                    window.scrollTo({ top: 100, behavior: "smooth" });
+                    alert("The application could not be sent. Please check your internet connection and try again, or contact ByYourSide East Africa directly.");
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit Application";
                 }
             });
         });

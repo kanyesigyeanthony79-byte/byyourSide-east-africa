@@ -64,20 +64,10 @@
             align-items: center;
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-burgundy);
-            text-decoration: none;
-        }
-
-        .logo-text small {
-            font-size: 0.8rem;
-            color: var(--accent-gold);
+        .app-logo {
             display: block;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            width: 235px;
+            height: auto;
         }
 
         .btn-back {
@@ -486,6 +476,9 @@
                 gap: 0.5rem;
                 align-items: flex-start;
             }
+            .app-logo {
+                width: 210px;
+            }
         }
     </style>
 </head>
@@ -495,7 +488,7 @@
     <header class="app-header">
         <div class="header-container">
             <a href="https://kanyesigyeanthony79-byte.github.io/byyourSide-east-africa/" class="brand-logo">
-                <span class="logo-text">ByYourSide <small>East Africa</small></span>
+                <img class="app-logo" src="assets/byyourside-logo-color.png" alt="ByYourSide East Africa">
             </a>
             <a href="https://kanyesigyeanthony79-byte.github.io/byyourSide-east-africa/" class="btn-back">&larr; Back to Main Site</a>
         </div>
@@ -525,7 +518,7 @@
             </div>
 
             <!-- Form Start -->
-                <form id="companionForm" action="https://formsubmit.co/ajax/byyoursideeastafrica@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
+                <form id="companionForm" action="https://formsubmit.co/byyoursideeastafrica@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
                     <input type="hidden" name="_subject" value="New ByYourSide Companion Application">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="true">
@@ -906,6 +899,14 @@
             const successScreen = document.getElementById("success-screen");
             const displayAppId = document.getElementById("display-app-id");
 
+            const submittedId = new URLSearchParams(window.location.search).get("application_id");
+            if (submittedId) {
+                form.style.display = "none";
+                document.querySelector(".progress-bar-wrapper").style.display = "none";
+                displayAppId.textContent = submittedId;
+                successScreen.style.display = "block";
+            }
+
             const stepTitles = [
                 "Personal Information",
                 "Experience & Background",
@@ -1027,7 +1028,7 @@
                 }
             });
 
-            form.addEventListener("submit", async (e) => {
+            form.addEventListener("submit", (e) => {
                 e.preventDefault();
 
                 if (!validateCurrentStep()) return;
@@ -1036,39 +1037,23 @@
                 submitBtn.textContent = "Submitting Application...";
 
                 const generatedAppID = generateAppID();
-                const formData = new FormData(form);
-                formData.append("Application ID", generatedAppID);
-                formData.append("Application Date", new Date().toISOString().split('T')[0]);
-                formData.append("Application Status", "NEW");
-
-                try {
-                    const response = await fetch(form.action, {
-                        method: "POST",
-                        body: formData,
-                        headers: { "Accept": "application/json" }
-                    });
-
-                    if (response.ok) {
-                        form.style.display = "none";
-                        document.querySelector(".progress-bar-wrapper").style.display = "none";
-                        displayAppId.textContent = generatedAppID;
-                        successScreen.style.display = "block";
-                        window.scrollTo({ top: 100, behavior: "smooth" });
-                    } else {
-                        let message = "Application submission failed. Please try again.";
-                        try {
-                            const result = await response.json();
-                            if (result.message) message = result.message;
-                        } catch (_) { /* Keep the generic message for non-JSON errors. */ }
-                        alert(message);
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = "Submit Application";
+                const addHiddenField = (name, value) => {
+                    let input = form.querySelector(`input[name="${name}"]`);
+                    if (!input) {
+                        input = document.createElement("input");
+                        input.type = "hidden";
+                        input.name = name;
+                        form.appendChild(input);
                     }
-                } catch (err) {
-                    alert("The application could not be sent. Please check your internet connection and try again, or contact ByYourSide East Africa directly.");
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = "Submit Application";
-                }
+                    input.value = value;
+                };
+                addHiddenField("Application ID", generatedAppID);
+                addHiddenField("Application Date", new Date().toISOString().split('T')[0]);
+                addHiddenField("Application Status", "NEW");
+                addHiddenField("_next", `${window.location.origin}${window.location.pathname}?application_id=${encodeURIComponent(generatedAppID)}`);
+
+                // Native multipart POST is required for FormSubmit to include attachments.
+                HTMLFormElement.prototype.submit.call(form);
             });
         });
     </script>

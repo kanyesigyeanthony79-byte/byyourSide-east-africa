@@ -543,6 +543,52 @@
       line-height: 1.5;
     }
 
+    /* Safari Operator FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-item h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .faq-item h3::before {
+      content: 'Q';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--accent-gold-light);
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
     /* For Partners B2B Section */
     .partner-section {
       background: var(--primary-dark);
@@ -831,6 +877,7 @@
       .empowerment-grid, .medical-card, .partner-section { grid-template-columns: 1fr; }
       .medical-image { min-height: 300px; }
       .steps-wrapper { grid-template-columns: repeat(2, 1fr); }
+      .faq-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -859,6 +906,7 @@
       .partner-section, .medical-content, .inquiry-wrapper { padding: 30px 20px; }
       .trust-grid { grid-template-columns: 1fr; }
       .steps-wrapper { grid-template-columns: 1fr; }
+      .faq-item { padding: 22px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
     }
@@ -884,6 +932,7 @@
         <li><a href="#services">Our Services</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#partners">For Partners</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="companion-application.html">Become a Companion</a></li>
         <li><a href="#east-africa">East Africa</a></li>
         <li><a href="#inquiry">Contact</a></li>
@@ -1119,6 +1168,44 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working Alongside Safari Operators FAQ -->
+  <section class="section-padding" id="faq" style="background: #FFFFFF;">
+    <div class="container">
+      <div class="section-title">
+        <span class="section-title-sub">Working Alongside Your Safari Team</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>ByYourSide adds personalised support to your existing safari plans—we do not replace your tour operator or guide.</p>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>Are you a tour operator or safari guide?</h3>
+          <p>No. We are a travel companionship and personal assistance service. Your safari operator handles the itinerary, transport, accommodation, and guiding; we support you throughout the experience.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Can I book ByYourSide with any safari company?</h3>
+          <p>Yes. We can work alongside your chosen operator, lodge, travel planner, or medical provider. Share your itinerary with us and we will coordinate the support you need.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What does a companion do during my safari?</h3>
+          <p>Your companion can assist with airport arrival, hotel check-in, daily routines, mobility, communication, practical tasks, and reassurance—so you can enjoy the safari at your own pace.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Do you provide medical care or emergency services?</h3>
+          <p>No. Our support is non-clinical. We can accompany you, help coordinate practical arrangements, and stay connected with your approved care team, but we do not provide medical treatment or emergency response.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Who is this service designed for?</h3>
+          <p>We support international visitors who want extra confidence and independence, including older travellers, solo travellers, people with mobility needs, and guests whose family cannot travel with them.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How do I arrange support?</h3>
+          <p>Contact us before you travel with your dates, destinations, safari itinerary, and support needs. We will discuss the right companion plan and coordinate with your travel team.</p>
+        </article>
       </div>
     </div>
   </section>

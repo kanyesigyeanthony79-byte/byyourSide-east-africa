@@ -920,6 +920,72 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
     }
+    .medical-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+
+.medical-side-content {
+  background: #f8f6f1;
+  padding: 2.5rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.medical-side-content h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1.75rem;
+  color: #0a231a;
+}
+
+.medical-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.medical-features li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.medical-features i {
+  color: #c9a227;
+  font-size: 1.15rem;
+  margin-top: 3px;
+  min-width: 22px;
+}
+
+.medical-features strong {
+  display: block;
+  color: #0a231a;
+  margin-bottom: 2px;
+}
+
+.medical-features span {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.45;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .medical-card {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -1087,21 +1153,62 @@
   </section>
 
   <!-- Medical Travel Feature -->
-  <section class="section-padding">
-    <div class="container">
-      <div class="medical-card">
-        <div class="medical-content">
-          <div class="medical-badge"><i class="fa-solid fa-briefcase-medical"></i> Nurse-Accompanied Medical Travel · Outbound</div>
-          <h2>When your loved ones can't travel with you, <em>we're ByYourSide.</em></h2>
-          <p>Travelling abroad from Uganda and across East Africa for medical care can be demanding, especially when family cannot be there. Our qualified nurses accompany clients throughout the journey, offering professional support, reassurance, care coordination, and continuity from departure through arrival and onward appointments.</p>
-          <div>
-            <a href="#inquiry" class="btn btn-gold">REQUEST NURSE ACCOMPANIMENT</a>
-          </div>
+ <section class="section-padding">
+  <div class="container">
+    <div class="medical-card">
+      <div class="medical-content">
+        <div class="medical-badge">
+          <i class="fa-solid fa-briefcase-medical"></i> Nurse-Accompanied Medical Travel · Outbound
         </div>
-        <div class="medical-image"></div>
+        <h2>When your loved ones can't travel with you, <em>we're ByYourSide.</em></h2>
+        <p>
+          Travelling abroad from Uganda and across East Africa for medical care can be demanding, 
+          especially when family cannot be there. Our qualified nurses accompany clients throughout 
+          the journey, offering professional support, reassurance, care coordination, and continuity 
+          from departure through arrival and onward appointments.
+        </p>
+        <div>
+          <a href="#inquiry" class="btn btn-gold">REQUEST NURSE ACCOMPANIMENT</a>
+        </div>
+      </div>
+
+      <!-- Replaced the image with this text block -->
+      <div class="medical-side-content">
+        <h3>What our nurses provide</h3>
+        <ul class="medical-features">
+          <li>
+            <i class="fa-solid fa-plane-departure"></i>
+            <div>
+              <strong>Airport to hospital support</strong>
+              <span>Assistance with check-in, immigration, transfers and settling in.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-user-nurse"></i>
+            <div>
+              <strong>Clinical accompaniment</strong>
+              <span>A qualified nurse present during appointments and procedures.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-comments"></i>
+            <div>
+              <strong>Family updates</strong>
+              <span>Regular communication with loved ones back home for peace of mind.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+              <strong>Continuity of care</strong>
+              <span>Support from departure until the client is safely back home.</span>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- How It Works -->
   <section class="section-padding" id="how-it-works" style="background: var(--bg-cream);">

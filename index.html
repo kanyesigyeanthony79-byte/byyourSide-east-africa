@@ -460,6 +460,71 @@
       display: block;
     }
 
+    /* Vision & Mission Section */
+    .vm-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .vm-card {
+      background: var(--primary-dark);
+      border-radius: var(--radius-lg);
+      padding: 50px 44px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .vm-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gold);
+    }
+
+    .vm-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(198, 146, 20, 0.12);
+      border: 1px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+    }
+
+    .vm-card span.section-title-sub {
+      margin-bottom: 6px;
+    }
+
+    .vm-card h3 {
+      font-size: 1.8rem;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+    }
+
+    .vm-card p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .vm-card p strong {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .vm-grid { grid-template-columns: 1fr; }
+    }
+
     /* Medical Feature Section */
     .medical-card {
       background: #FFFFFF;
@@ -1005,6 +1070,7 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="#home">Home</a></li>
         <li><a href="#empowerment">About Us</a></li>
+        <li><a href="#vision-mission">Vision &amp; Mission</a></li>
         <li><a href="#services">Our Services</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#partners">For Partners</a></li>
@@ -1147,6 +1213,32 @@
         </div>
         <div class="empowerment-image">
           <img src="assets/hero-companion.jpg" alt="Empowered Traveller in Africa">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section class="section-padding" id="vision-mission" style="background: var(--bg-cream);">
+    <div class="container">
+      <div class="section-title">
+        <span class="section-title-sub">The Future We're Building, Together</span>
+        <h2>Our Vision &amp; Mission</h2>
+      </div>
+
+      <div class="vm-grid">
+        <div class="vm-card">
+          <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
+          <span class="section-title-sub">Our</span>
+          <h3>Vision</h3>
+          <p>To become <strong>East Africa's trusted personal travel companion service</strong>, making travel more accessible, comfortable and enjoyable for everyone.</p>
+        </div>
+
+        <div class="vm-card">
+          <div class="vm-icon"><i class="fa-solid fa-handshake"></i></div>
+          <span class="section-title-sub">Our</span>
+          <h3>Mission</h3>
+          <p>To provide carefully matched, reliable companions who support travelers, families, elderly guests, people with disabilities, solo travelers, long-stay travelers and medical travelers — so they can experience East Africa with <strong>greater confidence, dignity and peace of mind.</strong></p>
         </div>
       </div>
     </div>
@@ -1480,6 +1572,7 @@
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#empowerment">About Us</a></li>
+            <li><a href="#vision-mission">Vision &amp; Mission</a></li>
             <li><a href="#services">Our Services</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#partners">For Partners</a></li>

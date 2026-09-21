@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ByYourSide EAST AFRICA — Travel with Confidence</title>
+  <title>Elderly Companionship & Personal Assistance | ByYourSide East Africa</title>
   
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1502,6 +1502,89 @@
     grid-template-columns: 1fr;
   }
 }
+
+    /* Elderly Care page — icon-based service grid */
+    .elder-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 1024px) {
+      .elder-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .elder-grid { grid-template-columns: 1fr; }
+    }
+
+    .elder-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .elder-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    .elder-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.4rem;
+      color: #FFFFFF;
+    }
+
+    .elder-icon.green { background: var(--primary-green); }
+    .elder-icon.gold { background: var(--accent-gold); }
+
+    .elder-card h3 {
+      font-size: 1.15rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .elder-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .elder-founder {
+      background: var(--primary-green);
+      color: var(--text-light);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+    }
+
+    .elder-founder h3 {
+      color: #FFFFFF;
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .elder-founder span.gold-tag {
+      color: var(--accent-gold);
+      font-style: italic;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .elder-founder p {
+      margin-bottom: 16px;
+      opacity: 0.9;
+      line-height: 1.7;
+    }
   </style>
 </head>
 <body>
@@ -1516,8 +1599,8 @@
       </div>
       <div class="topbar-right">
         <a href="companion-application.html"><i class="fa-solid fa-user-check"></i> Become a Companion</a>
-        <a href="#partners"><i class="fa-solid fa-handshake"></i> For Partners</a>
-        <a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        <a href="index.html#partners"><i class="fa-solid fa-handshake"></i> For Partners</a>
+        <a href="index.html#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
       </div>
     </div>
   </div>
@@ -1533,7 +1616,7 @@
         <!-- Desktop Navigation with Dropdowns -->
         <ul class="desktop-nav" id="desktopNav">
           <li>
-            <a href="#home" class="nav-link active">
+            <a href="index.html#home" class="nav-link">
               <span>Home</span>
             </a>
           </li>
@@ -1546,7 +1629,7 @@
             </a>
             <ul class="nav-dropdown-menu">
               <li>
-                <a href="#services" class="dropdown-link">
+                <a href="index.html#services" class="dropdown-link">
                   <i class="fa-solid fa-plane-departure"></i>
                   <div>
                     <strong>Our Services</strong>
@@ -1555,7 +1638,7 @@
                 </a>
               </li>
               <li>
-                <a href="#how-it-works" class="dropdown-link">
+                <a href="index.html#how-it-works" class="dropdown-link">
                   <i class="fa-solid fa-list-check"></i>
                   <div>
                     <strong>How It Works</strong>
@@ -1564,7 +1647,7 @@
                 </a>
               </li>
               <li>
-                <a href="#partners" class="dropdown-link">
+                <a href="index.html#partners" class="dropdown-link">
                   <i class="fa-solid fa-handshake"></i>
                   <div>
                     <strong>For Partners</strong>
@@ -1583,7 +1666,7 @@
             </a>
             <ul class="nav-dropdown-menu">
               <li>
-                <a href="#empowerment" class="dropdown-link">
+                <a href="index.html#empowerment" class="dropdown-link">
                   <i class="fa-solid fa-heart-pulse"></i>
                   <div>
                     <strong>About Us</strong>
@@ -1592,7 +1675,7 @@
                 </a>
               </li>
               <li>
-                <a href="#vision-mission" class="dropdown-link">
+                <a href="index.html#vision-mission" class="dropdown-link">
                   <i class="fa-solid fa-compass"></i>
                   <div>
                     <strong>Vision &amp; Mission</strong>
@@ -1601,7 +1684,7 @@
                 </a>
               </li>
               <li>
-                <a href="#east-africa" class="dropdown-link">
+                <a href="index.html#east-africa" class="dropdown-link">
                   <i class="fa-solid fa-earth-africa"></i>
                   <div>
                     <strong>East Africa Coverage</strong>
@@ -1612,9 +1695,9 @@
             </ul>
           </li>
 
-          <!-- Elderly Care Tab (Direct & Linked to elderly-care.html) -->
+          <!-- Elderly Care Tab (Active on this page) -->
           <li>
-            <a href="elderly-care.html" class="nav-link">
+            <a href="elderly-care.html" class="nav-link active">
               <span>Elderly Care (Uganda)</span>
             </a>
           </li>
@@ -1628,14 +1711,14 @@
 
           <!-- FAQ -->
           <li>
-            <a href="#faq" class="nav-link">
+            <a href="index.html#faq" class="nav-link">
               <span>FAQ</span>
             </a>
           </li>
 
           <!-- Contact -->
           <li>
-            <a href="#inquiry" class="nav-link">
+            <a href="#contact" class="nav-link">
               <span>Contact</span>
             </a>
           </li>
@@ -1664,56 +1747,56 @@
   <div class="mobile-nav-wrapper" id="mobileNavWrapper">
     <ul class="mobile-nav" id="mobileNavList">
       <li>
-        <a href="#home" class="mobile-nav-link active">
+        <a href="index.html#home" class="mobile-nav-link">
           <i class="fa-solid fa-house mobile-nav-icon"></i>
           <span>Home</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#services" class="mobile-nav-link">
+        <a href="index.html#services" class="mobile-nav-link">
           <i class="fa-solid fa-suitcase-rolling mobile-nav-icon"></i>
           <span>Our Services</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#empowerment" class="mobile-nav-link">
+        <a href="index.html#empowerment" class="mobile-nav-link">
           <i class="fa-solid fa-heart-pulse mobile-nav-icon"></i>
           <span>About Us</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#vision-mission" class="mobile-nav-link">
+        <a href="index.html#vision-mission" class="mobile-nav-link">
           <i class="fa-solid fa-compass mobile-nav-icon"></i>
           <span>Vision &amp; Mission</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#how-it-works" class="mobile-nav-link">
+        <a href="index.html#how-it-works" class="mobile-nav-link">
           <i class="fa-solid fa-list-check mobile-nav-icon"></i>
           <span>How It Works</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#east-africa" class="mobile-nav-link">
+        <a href="index.html#east-africa" class="mobile-nav-link">
           <i class="fa-solid fa-map-location-dot mobile-nav-icon"></i>
           <span>East Africa</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="elderly-care.html" class="mobile-nav-link">
+        <a href="elderly-care.html" class="mobile-nav-link active">
           <i class="fa-solid fa-hands-holding-child mobile-nav-icon"></i>
           <span>Elderly Care (Uganda)</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#partners" class="mobile-nav-link">
+        <a href="index.html#partners" class="mobile-nav-link">
           <i class="fa-solid fa-handshake mobile-nav-icon"></i>
           <span>For Partners</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
@@ -1727,14 +1810,14 @@
         </a>
       </li>
       <li>
-        <a href="#faq" class="mobile-nav-link">
+        <a href="index.html#faq" class="mobile-nav-link">
           <i class="fa-solid fa-circle-question mobile-nav-icon"></i>
           <span>FAQ</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
         </a>
       </li>
       <li>
-        <a href="#inquiry" class="mobile-nav-link">
+        <a href="#contact" class="mobile-nav-link">
           <i class="fa-solid fa-envelope mobile-nav-icon"></i>
           <span>Contact</span>
           <i class="fa-solid fa-chevron-right mobile-arrow"></i>
@@ -1754,472 +1837,132 @@
   </div>
   <div class="nav-overlay" id="navOverlay" onclick="toggleMenu(false)"></div>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
+  <!-- Hero -->
+  <section class="hero" id="home" style="background: linear-gradient(180deg, rgba(10, 35, 26, 0.72) 0%, rgba(10, 35, 26, 0.55) 100%), url('assets/hero_banner.jpg') center/cover no-repeat;">
     <div class="container">
       <div class="hero-content">
-        <span class="hero-tag">Premium Companion & Personal Assistance</span>
-        <h1>Travel East Africa.<br><span>Never Travel Alone.</span></h1>
-        <p>Professional companions and personal assistance for travellers who need a little extra support — from daily activities to medical travel accompaniment.</p>
+        <span class="hero-tag">Local Care · Uganda</span>
+        <h1>Growing Older<br><span>Shouldn't Mean Being Alone.</span></h1>
+        <p>Elderly companionship and personal assistance for families across Uganda — conversation, errands, appointments, and everyday support, delivered with dignity and respect.</p>
         <div class="hero-ctas">
-          <a href="#inquiry" class="btn btn-gold"><i class="fa-solid fa-user-plus"></i> REQUEST A COMPANION</a>
-          <a href="companion-application.html" class="btn btn-outline-light"><i class="fa-solid fa-briefcase"></i> BECOME A COMPANION</a>
-          <a href="#partners" class="btn btn-outline-light"><i class="fa-solid fa-handshake"></i> PARTNER WITH BYYOURSIDE</a>
+          <a href="#contact" class="btn btn-gold"><i class="fa-solid fa-user-plus"></i> REQUEST A COMPANION</a>
+          <a href="https://wa.me/256787612459" class="btn btn-outline-light"><i class="fa-brands fa-whatsapp"></i> CALL / WHATSAPP</a>
+          <a href="index.html#services" class="btn btn-outline-light"><i class="fa-solid fa-plane"></i> OUR TRAVEL SERVICES</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trust Strip -->
+  <!-- Why ByYourSide Strip -->
   <div class="trust-strip">
     <div class="container trust-grid">
       <div class="trust-item">
-        <div class="trust-icon"><i class="fa-solid fa-user-shield"></i></div>
+        <div class="trust-icon"><i class="fa-solid fa-user-nurse"></i></div>
         <div class="trust-text">
-          <h4>Trusted & Vetted</h4>
-          <p>Carefully selected professional companions</p>
+          <h4>Healthcare Background</h4>
+          <p>Founded by a qualified registered nurse</p>
         </div>
       </div>
       <div class="trust-item">
-        <div class="trust-icon"><i class="fa-solid fa-sliders"></i></div>
+        <div class="trust-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
         <div class="trust-text">
-          <h4>Personalised Support</h4>
-          <p>Tailored to your needs and preferences</p>
+          <h4>Person-Centred Support</h4>
+          <p>Care shaped around individual needs</p>
         </div>
       </div>
       <div class="trust-item">
-        <div class="trust-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <div class="trust-icon"><i class="fa-solid fa-heart"></i></div>
         <div class="trust-text">
-          <h4>Across East Africa</h4>
-          <p>We're with you wherever you go</p>
+          <h4>Dignity & Respect</h4>
+          <p>At the heart of everything we do</p>
         </div>
       </div>
       <div class="trust-item">
-        <div class="trust-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div class="trust-icon"><i class="fa-solid fa-handshake"></i></div>
         <div class="trust-text">
-          <h4>Compassionate Care</h4>
-          <p>More assistance, more confidence</p>
+          <h4>Reliable Companionship</h4>
+          <p>Consistent, trustworthy support</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Services Section -->
+  <!-- Services -->
   <section class="section-padding" id="services">
     <div class="container">
       <div class="section-title">
-        <span class="section-title-sub">Tailored Assistance</span>
-        <h2>Our Premium Services</h2>
-        <p>Inbound support for international travellers visiting East Africa, and outbound support for East Africans travelling abroad for medical care — plus continuation of your companion beyond East Africa when your journey doesn't end here.</p>
+        <span class="section-title-sub">Our Services</span>
+        <h2>Elderly Companionship & Personal Assistance</h2>
+        <p>A little company. A little support. A lot of difference — for families across Uganda.</p>
       </div>
 
-      <div class="services-grid">
-        <!-- Service 1 -->
-        <div class="service-card">
-          <div class="service-img-wrap">
-            <img src="assets/travel_companionship.jpg" alt="Travel Companionship">
-            <div class="service-card-icon"><i class="fa-solid fa-compass"></i></div>
-          </div>
-          <div class="service-content">
-            <h3>Travel Companionship</h3>
-            <p>A trusted companion throughout the journey, helping travellers enjoy activities, sightseeing, and experiences with complete confidence and peace of mind.</p>
-            <a href="#inquiry" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+      <div class="elder-grid">
+        <div class="elder-card">
+          <div class="elder-icon green"><i class="fa-solid fa-people-arrows"></i></div>
+          <h3>Companionship</h3>
+          <p>Conversation, presence and meaningful time together.</p>
         </div>
-
-        <!-- Service 2 -->
-        <div class="service-card">
-          <div class="service-img-wrap">
-            <img src="assets/mobility.jpg" alt="Mobility & Personal Assistance">
-            <div class="service-card-icon"><i class="fa-solid fa-person-walking-with-cane"></i></div>
-          </div>
-          <div class="service-content">
-            <h3>Mobility & Personal Assistance</h3>
-            <p>Support with mobility, activities, transportation, daily tasks, and accessibility so travellers can participate comfortably in every moment.</p>
-            <a href="#inquiry" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+        <div class="elder-card">
+          <div class="elder-icon gold"><i class="fa-solid fa-bag-shopping"></i></div>
+          <h3>Errands</h3>
+          <p>Help with everyday tasks and small errands.</p>
         </div>
-
-        <!-- Service 3 -->
-        <div class="service-card">
-          <div class="service-img-wrap">
-            <img src="assets/medical_travel.jpg" alt="Medical Travel Support">
-            <div class="service-card-icon"><i class="fa-solid fa-notes-medical"></i></div>
-          </div>
-          <div class="service-content">
-            <h3>Nurse-Accompanied Medical Travel <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color: var(--accent-gold); font-weight:700; display:block; font-family:'Plus Jakarta Sans', sans-serif; margin-top:4px;">Outbound</span></h3>
-            <p>Professional nurse accompaniment for clients travelling from East Africa to medical appointments and treatment abroad, providing attentive support throughout the journey when family cannot travel with them.</p>
-            <a href="#inquiry" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+        <div class="elder-card">
+          <div class="elder-icon green"><i class="fa-solid fa-calendar-check"></i></div>
+          <h3>Appointments</h3>
+          <p>Accompanying clients to appointments and visits.</p>
         </div>
-
-        <!-- Service 4 -->
-        <div class="service-card">
-          <div class="service-img-wrap">
-            <img src="assets/personal_assitance.jpg" alt="Personal Assistance">
-            <div class="service-card-icon"><i class="fa-solid fa-user-gear"></i></div>
-          </div>
-          <div class="service-content">
-            <h3>Personal Assistance</h3>
-            <p>Practical day-to-day support, scheduling assistance, and personal care coordination tailored to the traveller's individual needs and preferences.</p>
-            <a href="#inquiry" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+        <div class="elder-card">
+          <div class="elder-icon gold"><i class="fa-solid fa-cart-shopping"></i></div>
+          <h3>Shopping</h3>
+          <p>Assistance with shopping and essential purchases.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon gold"><i class="fa-solid fa-person-walking"></i></div>
+          <h3>Walks</h3>
+          <p>Safe, enjoyable walks and time outdoors.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon green"><i class="fa-solid fa-people-group"></i></div>
+          <h3>Social Visits</h3>
+          <p>Accompanying clients to church, family visits and social activities.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon gold"><i class="fa-solid fa-house"></i></div>
+          <h3>Household Support</h3>
+          <p>Light everyday assistance around the home.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon green"><i class="fa-solid fa-wheelchair"></i></div>
+          <h3>Mobility Assistance</h3>
+          <p>Support getting around safely and comfortably.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Empowerment Section -->
-  <section class="section-padding empowerment-bg" id="empowerment">
+  <!-- Founder / Trust -->
+  <section class="section-padding" style="background: var(--bg-cream);">
     <div class="container">
-      <div class="empowerment-grid">
-        <div class="empowerment-content">
-          <span class="section-title-sub">Our Philosophy</span>
-          <h2>Explore the world <span>on your terms.</span></h2>
-          <p>Your disability or mobility needs shouldn't limit the incredible experiences you get to have. With the right support by your side, you can explore, discover, and experience Uganda and East Africa with greater confidence, comfort, and independence.</p>
-          <a href="#inquiry" class="btn btn-gold">PLAN YOUR JOURNEY</a>
-        </div>
-        <div class="empowerment-image">
-          <img src="assets/hero-companion.jpg" alt="Empowered Traveller in Africa">
-        </div>
+      <div class="elder-founder">
+        <span class="section-title-sub" style="color: var(--accent-gold);">Trusted Care</span>
+        <h3>Professional Understanding.</h3>
+        <span class="gold-tag">Founded by a qualified registered nurse.</span>
+        <p>ByYourSide is founded by a qualified registered nurse with professional experience in healthcare and surgical/theatre settings.</p>
+        <p>This means our approach to companionship and personal assistance is informed by professional healthcare experience, dignity, safety, communication and respect for individual needs.</p>
       </div>
     </div>
   </section>
 
-  <!-- Vision & Mission -->
-  <section class="section-padding" id="vision-mission" style="background: var(--bg-cream);">
-    <div class="container">
-      <div class="section-title">
-        <span class="section-title-sub">The Future We're Building, Together</span>
-        <h2>Our Vision &amp; Mission</h2>
-      </div>
-
-      <div class="vm-grid">
-        <div class="vm-card">
-          <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
-          <span class="section-title-sub">Our</span>
-          <h3>Vision</h3>
-          <p>To become <strong>East Africa's trusted personal travel companion service</strong>, making travel more accessible, comfortable and enjoyable for everyone.</p>
-        </div>
-
-        <div class="vm-card">
-          <div class="vm-icon"><i class="fa-solid fa-handshake"></i></div>
-          <span class="section-title-sub">Our</span>
-          <h3>Mission</h3>
-          <p>To provide carefully matched, reliable companions who support travelers, families, elderly guests, people with disabilities, solo travelers, long-stay travelers and medical travelers — so they can experience East Africa with <strong>greater confidence, dignity and peace of mind.</strong></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Medical Travel Feature -->
- <section class="section-padding">
-  <div class="container">
-    <div class="medical-card">
-      <div class="medical-content">
-        <div class="medical-badge">
-          <i class="fa-solid fa-briefcase-medical"></i> Nurse-Accompanied Medical Travel · Outbound
-        </div>
-        <h2>When your loved ones can't travel with you, <em>we're ByYourSide.</em></h2>
-        <p>
-          Travelling abroad from Uganda and across East Africa for medical care can be demanding, 
-          especially when family cannot be there. Our qualified nurses accompany clients throughout 
-          the journey, offering professional support, reassurance, care coordination, and continuity 
-          from departure through arrival and onward appointments.
-        </p>
-        <div>
-          <a href="#inquiry" class="btn btn-gold">REQUEST NURSE ACCOMPANIMENT</a>
-        </div>
-      </div>
-
-      <!-- Replaced the image with this text block -->
-      <div class="medical-side-content">
-        <h3>What our nurses provide</h3>
-        <ul class="medical-features">
-          <li>
-            <i class="fa-solid fa-plane-departure"></i>
-            <div>
-              <strong>Airport to hospital support</strong>
-              <span>Assistance with check-in, immigration, transfers and settling in.</span>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-user-nurse"></i>
-            <div>
-              <strong>Clinical accompaniment</strong>
-              <span>A qualified nurse present during appointments and procedures.</span>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-comments"></i>
-            <div>
-              <strong>Family updates</strong>
-              <span>Regular communication with loved ones back home for peace of mind.</span>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-heart-pulse"></i>
-            <div>
-              <strong>Continuity of care</strong>
-              <span>Support from departure until the client is safely back home.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- How It Works -->
-  <section class="section-padding" id="how-it-works" style="background: var(--bg-cream);">
-    <div class="container">
-      <div class="section-title">
-        <span class="section-title-sub">Simple Process</span>
-        <h2>How It Works</h2>
-        <p>A seamless, secure pathway to personalized travel support.</p>
-      </div>
-
-      <div class="steps-wrapper">
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <h3>Tell Us Your Needs</h3>
-          <p>Share your travel plans, support needs, and personal preferences with our concierge team.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <h3>We Match You</h3>
-          <p>We carefully identify and assign the right companion for your specific journey requirements.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <h3>Travel With Confidence</h3>
-          <p>Your companion supports you seamlessly throughout your stay across East Africa.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">04</div>
-          <h3>We Follow Up</h3>
-          <p>We check in regularly to ensure your experience meets our highest standards of excellence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- For Partners -->
-  <section class="section-padding" id="partners">
-    <div class="container">
-      <div class="partner-section">
-        <div class="partner-content">
-          <span class="section-title-sub" style="color: var(--accent-gold);">B2B Partnerships</span>
-          <h2>Give your guests more than a great itinerary.<br><em>Give them peace of mind.</em></h2>
-          <p>Partner with ByYourSide East Africa to integrate professional companions and personal assistance services into your tour packages, hotel offerings, or medical referral programs.</p>
-          <a href="#inquiry" class="btn btn-gold">PARTNER WITH US</a>
-        </div>
-
-        <div class="partner-benefits">
-          <div class="benefit-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <div>
-              <h4>Enhanced Guest Experience</h4>
-              <p style="font-size: 0.8rem; color: #A0AEC0;">Elevate guest satisfaction with tailored care.</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <div>
-              <h4>Greater Accessibility</h4>
-              <p style="font-size: 0.8rem; color: #A0AEC0;">Open your itineraries to all travelers.</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <div>
-              <h4>Professional Companions</h4>
-              <p style="font-size: 0.8rem; color: #A0AEC0;">Vetted, compassionate, and discreet staff.</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <div>
-              <h4>Added Package Value</h4>
-              <p style="font-size: 0.8rem; color: #A0AEC0;">Differentiate your high-end travel offerings.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Working Alongside Safari Operators FAQ -->
-  <section class="section-padding" id="faq" style="background: #FFFFFF;">
-    <div class="container">
-      <div class="section-title">
-        <span class="section-title-sub">Working Alongside Your Safari Team</span>
-        <h2>Frequently Asked Questions</h2>
-        <p>ByYourSide adds personalised support to your existing safari plans—we do not replace your tour operator or guide.</p>
-      </div>
-
-      <div class="faq-grid">
-        <article class="faq-item">
-          <h3>Are you a tour operator or safari guide?</h3>
-          <p>No. We are a travel companionship and personal assistance service. Your safari operator handles the itinerary, transport, accommodation, and guiding; we support you throughout the experience.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Can I book ByYourSide with any safari company?</h3>
-          <p>Yes. We can work alongside your chosen operator, lodge, travel planner, or medical provider. Share your itinerary with us and we will coordinate the support you need.</p>
-        </article>
-        <article class="faq-item">
-          <h3>What does a companion do during my safari?</h3>
-          <p>Your companion can assist with airport arrival, hotel check-in, daily routines, mobility, communication, practical tasks, and reassurance—so you can enjoy the safari at your own pace.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Do you provide medical care or emergency services?</h3>
-          <p>Our general travel companions provide non-clinical support only. For our Nurse-Accompanied Medical Travel service specifically, a qualified nurse travels with you, offering professional support, reassurance, and care coordination throughout the journey. In both cases, we work alongside — not in place of — your treating physicians and approved care team, and we do not provide emergency medical treatment.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Who is this service designed for?</h3>
-          <p>We support international visitors who want extra confidence and independence, including older travellers, solo travellers, people with mobility needs, and guests whose family cannot travel with them.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Can families travelling with young children use ByYourSide?</h3>
-          <p>Absolutely. We provide practical, non-clinical assistance during airport transfers, hotel stays, daily routines, family activities, and excursions. A parent or legal guardian remains responsible for the child at all times.</p>
-        </article>
-        <article class="faq-item">
-          <h3>How do I arrange support?</h3>
-          <p>Contact us before you travel with your dates, destinations, safari itinerary, and support needs. We will discuss the right companion plan and coordinate with your travel team.</p>
-        </article>
-        <article class="faq-item">
-          <h3>Can ByYourSide accompany me outside East Africa?</h3>
-          <p>Yes — this is one of our two outbound services. If your journey continues beyond East Africa, your companion can travel on with you. Each journey is assessed around the itinerary, destination requirements, companion availability, visas, travel arrangements, and applicable local regulations.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- East Africa Coverage -->
-  <section class="section-padding" id="east-africa">
-    <div class="container">
-      <div class="region-box">
-        <span class="section-title-sub">Regional Expertise</span>
-        <h2 style="font-size: 2.2rem; color: var(--primary-dark);">Local Knowledge. International Standards.</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 10px auto 0;">Headquartered in Uganda, we deliver consistent, luxury companion services across the East African region.</p>
-
-        <div class="country-grid">
-          <div class="country-card">
-            <img src="https://flagcdn.com/w40/ug.png" alt="Uganda" class="flag-img"> Uganda
-          </div>
-          <div class="country-card">
-            <img src="https://flagcdn.com/w40/ke.png" alt="Kenya" class="flag-img"> Kenya
-          </div>
-          <div class="country-card">
-            <img src="https://flagcdn.com/w40/rw.png" alt="Rwanda" class="flag-img"> Rwanda
-          </div>
-          <div class="country-card">
-            <img src="https://flagcdn.com/w40/tz.png" alt="Tanzania" class="flag-img"> Tanzania
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Inquiry Form Section -->
-  <section class="section-padding" id="inquiry" style="background: var(--bg-cream);">
-    <div class="container">
-      <div class="inquiry-wrapper">
-        <div style="text-align: center; margin-bottom: 20px;">
-          <span class="section-title-sub">Start Your Journey</span>
-          <h2 style="font-size: 2.4rem; color: var(--primary-dark);">Tell us how we can be ByYourSide.</h2>
-          <p style="color: var(--text-muted);">Fill out the inquiry form below, and our concierge team will respond promptly.</p>
-        </div>
-
-        <form id="inquiryForm">
-          <input type="hidden" name="_subject" value="New Inquiry — ByYourSide East Africa">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="Full Name" class="form-control" placeholder="John Doe" required>
-            </div>
-
-            <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" name="Email Address" class="form-control" placeholder="john@example.com" required>
-            </div>
-
-            <div class="form-group">
-              <label>WhatsApp / Phone</label>
-              <input type="tel" name="WhatsApp / Phone" class="form-control" placeholder="+1 555 000 0000" required>
-            </div>
-
-            <div class="form-group">
-              <label>Country of Residence</label>
-              <input type="text" name="Country of Residence" class="form-control" placeholder="United States, UK, etc.">
-            </div>
-
-            <div class="form-group">
-              <label>Destination Country</label>
-              <select name="Destination Country" class="form-control">
-                <option>Uganda</option>
-                <option>Kenya</option>
-                <option>Rwanda</option>
-                <option>Tanzania</option>
-                <option>Multiple Destinations</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Travel Dates</label>
-              <input type="text" name="Travel Dates" class="form-control" placeholder="Approximate dates or month">
-            </div>
-
-            <div class="form-group">
-              <label>Number of Travellers</label>
-              <input type="number" name="Number of Travellers" class="form-control" min="1" value="1">
-            </div>
-
-            <div class="form-group">
-              <label>Type of Support Needed</label>
-              <select name="Type of Support Needed" class="form-control">
-                <option>Travel Companionship</option>
-                <option>Mobility Assistance</option>
-                <option>Personal Assistance</option>
-                <option>Medical Travel Accompaniment</option>
-                <option>Elderly Traveller Support</option>
-                <option>Partner Partnership Inquiry</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Preferred Language</label>
-              <input type="text" name="Preferred Language" class="form-control" placeholder="English, French, German, etc.">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Additional Information</label>
-              <textarea name="Additional Information" class="form-control" placeholder="Tell us more about your travel plans or specific support requirements..."></textarea>
-            </div>
-
-            <div class="form-actions">
-              <button type="submit" class="btn btn-gold" style="flex: 1;" id="inquirySubmitBtn"><i class="fa-solid fa-paper-plane"></i> SUBMIT INQUIRY</button>
-              <a href="https://wa.me/256787612459" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="section-padding">
+  <!-- Contact CTA -->
+  <section class="section-padding" id="contact">
     <div class="container">
       <div class="final-cta">
-        <h2>Ready to travel with confidence?</h2>
-        <p>Tell us what you need and we'll help you plan the right support for your journey across East Africa.</p>
+        <h2>Want to work with us?</h2>
+        <p>Get in touch and let's talk about the right support for your family, here in Uganda.</p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-          <a href="#inquiry" class="btn btn-gold">REQUEST A COMPANION</a>
-          <a href="companion-application.html" class="btn btn-outline-gold">BECOME A COMPANION</a>
-          <a href="https://wa.me/256787612459" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> CHAT ON WHATSAPP</a>
+          <a href="https://wa.me/256787612459" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> CALL / WHATSAPP: +256 787 612 459</a>
+          <a href="mailto:byyoursideeastafrica@gmail.com" class="btn btn-outline-gold"><i class="fa-solid fa-envelope"></i> EMAIL US</a>
         </div>
       </div>
     </div>
@@ -2230,32 +1973,28 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <!-- White Variant Logo for Dark Footer (real artwork, recolored) -->
           <img class="logo-svg" src="assets/byyourside-logo-white.png" alt="ByYourSide East Africa">
-          <p class="footer-desc">Premium travel companionship and personal assistance services for international travellers across East Africa.</p>
+          <p class="footer-desc">Elderly companionship and personal assistance for families across Uganda.</p>
         </div>
 
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#empowerment">About Us</a></li>
-            <li><a href="#vision-mission">Vision &amp; Mission</a></li>
-            <li><a href="#services">Our Services</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#partners">For Partners</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Travel Services</a></li>
+            <li><a href="#services">Elderly Care Services</a></li>
             <li><a href="companion-application.html">Become a Companion</a></li>
-            <li><a href="#inquiry">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#services">Travel Companionship</a></li>
-            <li><a href="#services">Mobility & Assistance</a></li>
-            <li><a href="#services">Medical Travel Support</a></li>
-            <li><a href="#services">Personal Assistance</a></li>
+            <li><a href="#services">Companionship</a></li>
+            <li><a href="#services">Errands & Shopping</a></li>
+            <li><a href="#services">Appointments</a></li>
+            <li><a href="#services">Mobility Assistance</a></li>
           </ul>
         </div>
 
@@ -2263,7 +2002,7 @@
           <h4>Contact Us</h4>
           <div class="footer-contact-item">
             <i class="fa-solid fa-location-dot"></i>
-            <span>Kampala, Uganda<br>Serving East Africa</span>
+            <span>Kampala, Uganda</span>
           </div>
           <div class="footer-contact-item">
             <i class="fa-brands fa-whatsapp"></i>
@@ -2289,7 +2028,7 @@
 
       <div class="footer-bottom">
         <span>&copy; 2026 ByYourSide East Africa. All rights reserved.</span>
-        <span>Travel safe. We're <strong>ByYourSide</strong>.</span>
+        <span>A little company. A little support. A lot of difference.</span>
       </div>
     </div>
   </footer>
@@ -2375,122 +2114,6 @@
         }
       }
     }, { passive: true });
-
-    // Precise ScrollSpy and Active Nav Link Highlighting (Sorted by vertical offsetTop)
-    (function () {
-      const allNavLinks = document.querySelectorAll('.desktop-nav a.nav-link, .desktop-nav a.dropdown-link, .mobile-nav a.mobile-nav-link');
-      let clickLockUntil = 0;
-
-      function getTrackedSections() {
-        const sections = [];
-        const seen = new Set();
-        document.querySelectorAll('section[id]').forEach(function (sec) {
-          const id = sec.getAttribute('id');
-          if (id && !seen.has(id)) {
-            seen.add(id);
-            sections.push({ id: id, element: sec, top: sec.offsetTop });
-          }
-        });
-        // Sort ascending by actual vertical offsetTop position
-        sections.sort(function (a, b) { return a.top - b.top; });
-        return sections;
-      }
-
-      function setActiveNav(activeId) {
-        allNavLinks.forEach(function (link) {
-          const href = link.getAttribute('href');
-          const isMatch = href === '#' + activeId || (href === 'index.html#' + activeId) || (activeId === 'home' && (href === '#home' || href === 'index.html'));
-
-          if (isMatch) {
-            link.classList.add('active');
-            const parentDropdown = link.closest('.nav-dropdown-item');
-            if (parentDropdown) {
-              parentDropdown.classList.add('active');
-            }
-          } else {
-            link.classList.remove('active');
-            const parentDropdown = link.closest('.nav-dropdown-item');
-            if (parentDropdown) {
-              const hasActiveChild = parentDropdown.querySelector('.dropdown-link.active');
-              if (!hasActiveChild) {
-                parentDropdown.classList.remove('active');
-              }
-            }
-          }
-        });
-      }
-
-      let isTicking = false;
-      window.addEventListener('scroll', function () {
-        if (Date.now() < clickLockUntil) return;
-        if (!isTicking) {
-          window.requestAnimationFrame(function () {
-            const sections = getTrackedSections();
-            const scrollPos = window.scrollY + 130;
-            let currentId = '';
-
-            for (let i = sections.length - 1; i >= 0; i--) {
-              const sec = sections[i];
-              if (sec.element.offsetTop <= scrollPos) {
-                currentId = sec.id;
-                break;
-              }
-            }
-
-            if (currentId) {
-              setActiveNav(currentId);
-            } else if (window.scrollY < 200) {
-              setActiveNav('home');
-            }
-            isTicking = false;
-          });
-          isTicking = true;
-        }
-      }, { passive: true });
-
-      allNavLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          const href = this.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            clickLockUntil = Date.now() + 800;
-            setActiveNav(href.substring(1));
-          }
-        });
-      });
-    })();
-
-    const inquiryForm = document.getElementById('inquiryForm');
-    if (inquiryForm) {
-      inquiryForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const btn = document.getElementById('inquirySubmitBtn');
-        const originalText = btn.innerHTML;
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
-
-        fetch('https://formsubmit.co/ajax/byyoursideeastafrica@gmail.com', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(inquiryForm)
-        })
-          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-          .then(function (result) {
-            if (result.ok) {
-              alert('Thank you for your inquiry. Our team will contact you shortly.');
-              inquiryForm.reset();
-            } else {
-              alert('Sorry, something went wrong sending your inquiry. Please reach us directly on WhatsApp at +256 787 612 459.');
-            }
-          })
-          .catch(function () {
-            alert('Sorry, something went wrong sending your inquiry. Please reach us directly on WhatsApp at +256 787 612 459.');
-          })
-          .finally(function () {
-            btn.disabled = false;
-            btn.innerHTML = originalText;
-          });
-      });
-    }
   </script>
 </body>
 </html>

@@ -881,7 +881,7 @@
                 <div class="form-step" data-step="7">
                     <div class="step-header">
                         <h2>Step 7: Supporting Documents</h2>
-                        <p>Attach your CV and relevant training certificates (PDF, DOCX, JPG, PNG, combined size under 4MB).</p>
+                        <p>Attach your CV and relevant training certificates (PDF, DOCX, JPG, PNG, combined size under 10MB).</p>
                     </div>
 
                     <div class="form-group">
@@ -1134,8 +1134,8 @@
                         totalFileSize += cvInput.files[0].size;
                     }
                     for (const file of certInput.files) totalFileSize += file.size;
-                    if (totalFileSize / 1024 / 1024 > 4) {
-                        alert("The combined size of your CV and supporting documents must not exceed 4MB.");
+                    if (totalFileSize / 1024 / 1024 > 10) {
+                        alert("The combined size of your CV and supporting documents must not exceed 10MB.");
                         isValid = false;
                     }
                 }

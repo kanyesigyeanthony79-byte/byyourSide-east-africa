@@ -389,6 +389,68 @@
             cursor: not-allowed;
         }
 
+        .btn-save {
+            background-color: transparent;
+            color: var(--primary-burgundy);
+            border: 1.5px solid var(--primary-burgundy);
+        }
+
+        .btn-save:hover {
+            background-color: rgba(88, 24, 37, 0.06);
+        }
+
+        .form-actions {
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .save-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.9rem;
+            text-align: center;
+        }
+
+        .save-note a {
+            color: var(--primary-burgundy);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .draft-banner {
+            display: none;
+            background: rgba(46, 125, 50, 0.08);
+            border-left: 4px solid var(--success-green);
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--success-green);
+            color: #FFF;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         .btn-submit {
             background-color: var(--accent-gold);
             color: #FFF;
@@ -515,6 +577,10 @@
                 <div class="progress-track">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
+            </div>
+
+            <div id="draft-banner" class="draft-banner">
+                Welcome back! We restored your saved progress. Please re-attach your documents on Step 7, as files cannot be saved.
             </div>
 
             <!-- Form Start -->
@@ -815,7 +881,7 @@
                 <div class="form-step" data-step="7">
                     <div class="step-header">
                         <h2>Step 7: Supporting Documents</h2>
-                        <p>Attach your CV and relevant training certificates (PDF, DOCX, JPG, PNG under 5MB).</p>
+                        <p>Attach your CV and relevant training certificates (PDF, DOCX, JPG, PNG, combined size under 4MB).</p>
                     </div>
 
                     <div class="form-group">
@@ -858,9 +924,11 @@
                 <!-- Form Controls -->
                 <div class="form-actions">
                     <button type="button" id="btn-prev" class="btn btn-secondary" disabled>Previous</button>
+                    <button type="button" id="btn-save" class="btn btn-save">Save Progress</button>
                     <button type="button" id="btn-next" class="btn btn-primary">Continue</button>
                     <button type="submit" id="btn-submit" class="btn btn-submit" style="display: none;">Submit Application</button>
                 </div>
+                <p class="save-note">Progress is saved on this device and browser only. Uploaded files are not saved. <a id="clear-draft">Clear saved data</a></p>
             </form>
 
             <!-- SUCCESS CONFIRMATION SCREEN (Hidden initially) -->
@@ -882,6 +950,8 @@
         <p>&copy; 2026 ByYourSide East Africa. All Rights Reserved. Dignified Non-Clinical Travel Support.</p>
     </footer>
 
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
     <!-- Inline Application Script -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -899,8 +969,71 @@
             const successScreen = document.getElementById("success-screen");
             const displayAppId = document.getElementById("display-app-id");
 
+            const DRAFT_KEY = "bys_companion_draft_v1";
+            const saveBtn = document.getElementById("btn-save");
+            const toast = document.getElementById("toast");
+            const draftBanner = document.getElementById("draft-banner");
+            const SKIP = ["_honey", "consent"];
+
+            function showToast(msg) {
+                toast.textContent = msg;
+                toast.classList.add("show");
+                clearTimeout(showToast.t);
+                showToast.t = setTimeout(() => toast.classList.remove("show"), 2800);
+            }
+
+            function saveDraft(manual) {
+                try {
+                    const data = { step: currentStep, fields: {} };
+                    form.querySelectorAll("input, select, textarea").forEach((el) => {
+                        if (!el.name || el.type === "file" || el.type === "hidden" || SKIP.includes(el.name)) return;
+                        if (el.type === "checkbox") {
+                            (data.fields[el.name] = data.fields[el.name] || []);
+                            if (el.checked) data.fields[el.name].push(el.value);
+                        } else {
+                            data.fields[el.name] = el.value;
+                        }
+                    });
+                    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+                    if (manual) showToast("Progress saved on this device. You can safely close this page.");
+                } catch (err) {
+                    if (manual) showToast("Could not save. Your browser may be blocking storage.");
+                }
+            }
+
+            function restoreDraft() {
+                try {
+                    const raw = localStorage.getItem(DRAFT_KEY);
+                    if (!raw) return;
+                    const data = JSON.parse(raw);
+                    Object.keys(data.fields || {}).forEach((name) => {
+                        const value = data.fields[name];
+                        form.querySelectorAll(`[name="${name}"]`).forEach((el) => {
+                            if (el.type === "checkbox") el.checked = value.includes(el.value);
+                            else el.value = value;
+                        });
+                    });
+                    if (data.step && data.step >= 1 && data.step <= totalSteps) currentStep = data.step;
+                    draftBanner.style.display = "block";
+                } catch (err) { /* ignore corrupt draft */ }
+            }
+
+            let autoTimer;
+            const queueAutoSave = () => { clearTimeout(autoTimer); autoTimer = setTimeout(() => saveDraft(false), 600); };
+            form.addEventListener("input", queueAutoSave);
+            form.addEventListener("change", queueAutoSave);
+            saveBtn.addEventListener("click", () => saveDraft(true));
+
+            document.getElementById("clear-draft").addEventListener("click", () => {
+                if (confirm("Clear all saved data and start over?")) {
+                    try { localStorage.removeItem(DRAFT_KEY); } catch (err) {}
+                    window.location.href = window.location.pathname;
+                }
+            });
+
             const submittedId = new URLSearchParams(window.location.search).get("application_id");
             if (submittedId) {
+                try { localStorage.removeItem(DRAFT_KEY); } catch (err) {}
                 form.style.display = "none";
                 document.querySelector(".progress-bar-wrapper").style.display = "none";
                 displayAppId.textContent = submittedId;
@@ -998,13 +1131,11 @@
                     const certInput = document.getElementById("certFiles");
                     let totalFileSize = 0;
                     if (cvInput.files.length > 0) {
-                        const fileSize = cvInput.files[0].size / 1024 / 1024;
                         totalFileSize += cvInput.files[0].size;
-                        if (fileSize > 5) { alert("CV File size exceeds 5MB limit."); isValid = false; }
                     }
                     for (const file of certInput.files) totalFileSize += file.size;
-                    if (totalFileSize / 1024 / 1024 > 10) {
-                        alert("The combined size of your CV and supporting documents must not exceed 10MB.");
+                    if (totalFileSize / 1024 / 1024 > 4) {
+                        alert("The combined size of your CV and supporting documents must not exceed 4MB.");
                         isValid = false;
                     }
                 }
@@ -1047,14 +1178,20 @@
                     }
                     input.value = value;
                 };
-                addHiddenField("Application ID", generatedAppID);
-                addHiddenField("Application Date", new Date().toISOString().split('T')[0]);
-                addHiddenField("Application Status", "NEW");
+                addHiddenField("Application_ID", generatedAppID);
+                addHiddenField("Application_Date", new Date().toISOString().split('T')[0]);
+                addHiddenField("Application_Status", "NEW");
                 addHiddenField("_next", `${window.location.origin}${window.location.pathname}?application_id=${encodeURIComponent(generatedAppID)}`);
 
                 // Native multipart POST is required for FormSubmit to include attachments.
                 HTMLFormElement.prototype.submit.call(form);
             });
+
+            if (!submittedId) {
+                restoreDraft();
+                updateStepDisplay();
+                window.scrollTo(0, 0);
+            }
         });
     </script>
 </body>

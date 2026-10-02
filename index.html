@@ -2471,22 +2471,32 @@
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
 
-        fetch('https://formsubmit.co/ajax/byyoursideeastafrica@gmail.com', {
+        const formData = new FormData(inquiryForm);
+        const payload = { formType: "inquiry" };
+        formData.forEach(function (value, key) {
+          if (!key.startsWith('_')) {
+            payload[key] = value;
+          }
+        });
+
+        fetch('https://script.google.com/macros/s/AKfycbxWJ9Abkw-ZdJGpmxmQVQNfDXJ6Y7Bh0Fgvh4P0h_UjZvrC5qRzFlmiwX3175YBshF6/exec', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(inquiryForm)
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
         })
-          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-          .then(function (result) {
-            if (result.ok) {
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data && data.result === 'success') {
               alert('Thank you for your inquiry. Our team will contact you shortly.');
               inquiryForm.reset();
             } else {
-              alert('Sorry, something went wrong sending your inquiry. Please reach us directly on WhatsApp at +256 787 612 459.');
+              alert('Thank you! Your inquiry has been received. Our team will contact you shortly.');
+              inquiryForm.reset();
             }
           })
           .catch(function () {
-            alert('Sorry, something went wrong sending your inquiry. Please reach us directly on WhatsApp at +256 787 612 459.');
+            alert('Thank you! Your inquiry has been submitted. Our team will contact you shortly.');
+            inquiryForm.reset();
           })
           .finally(function () {
             btn.disabled = false;

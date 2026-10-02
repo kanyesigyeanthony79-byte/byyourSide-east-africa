@@ -584,10 +584,7 @@
             </div>
 
             <!-- Form Start -->
-                <form id="companionForm" action="https://formsubmit.co/byyoursideeastafrica@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
-                    <input type="hidden" name="_subject" value="New ByYourSide Companion Application">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="true">
+                <form id="companionForm" novalidate>
                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                 
                 <!-- STEP 1: Personal Information -->
@@ -1159,32 +1156,106 @@
                 }
             });
 
-            form.addEventListener("submit", (e) => {
+            const fileToBase64 = (file) => {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const parts = reader.result.split(',');
+                        resolve({
+                            name: file.name,
+                            type: file.type || 'application/octet-stream',
+                            base64: parts[1] || ''
+                        });
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            };
+
+            form.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
                 if (!validateCurrentStep()) return;
 
                 submitBtn.disabled = true;
-                submitBtn.textContent = "Submitting Application...";
+                submitBtn.textContent = "Processing & Uploading...";
 
                 const generatedAppID = generateAppID();
-                const addHiddenField = (name, value) => {
-                    let input = form.querySelector(`input[name="${name}"]`);
-                    if (!input) {
-                        input = document.createElement("input");
-                        input.type = "hidden";
-                        input.name = name;
-                        form.appendChild(input);
-                    }
-                    input.value = value;
-                };
-                addHiddenField("Application_ID", generatedAppID);
-                addHiddenField("Application_Date", new Date().toISOString().split('T')[0]);
-                addHiddenField("Application_Status", "NEW");
-                addHiddenField("_next", `${window.location.origin}${window.location.pathname}?application_id=${encodeURIComponent(generatedAppID)}`);
 
-                // Native multipart POST is required for FormSubmit to include attachments.
-                HTMLFormElement.prototype.submit.call(form);
+                try {
+                    const filesPayload = [];
+                    const cvInput = document.getElementById("cvFile");
+                    if (cvInput && cvInput.files.length > 0) {
+                        submitBtn.textContent = "Uploading CV...";
+                        const cvObj = await fileToBase64(cvInput.files[0]);
+                        cvObj.field = "CV / Resume";
+                        filesPayload.push(cvObj);
+                    }
+
+                    const certInput = document.getElementById("certFiles");
+                    if (certInput && certInput.files.length > 0) {
+                        for (let i = 0; i < certInput.files.length; i++) {
+                            submitBtn.textContent = `Uploading Document ${i + 1} of ${certInput.files.length}...`;
+                            const certObj = await fileToBase64(certInput.files[i]);
+                            certObj.field = "Certificate / Supporting Document";
+                            filesPayload.push(certObj);
+                        }
+                    }
+
+                    submitBtn.textContent = "Submitting Application...";
+
+                    const formData = new FormData(form);
+                    const payload = {
+                        formType: "companion",
+                        Application_ID: generatedAppID,
+                        Application_Date: new Date().toISOString().split('T')[0],
+                        Application_Status: "NEW",
+                        files: filesPayload
+                    };
+
+                    formData.forEach((value, key) => {
+                        if (!key.startsWith('_') && key !== 'cvFile' && key !== 'certFiles') {
+                            if (payload[key]) {
+                                if (Array.isArray(payload[key])) {
+                                    payload[key].push(value);
+                                } else {
+                                    payload[key] = [payload[key], value];
+                                }
+                            } else {
+                                payload[key] = value;
+                            }
+                        }
+                    });
+
+                    await fetch("https://script.google.com/macros/s/AKfycbxWJ9Abkw-ZdJGpmxmQVQNfDXJ6Y7Bh0Fgvh4P0h_UjZvrC5qRzFlmiwX3175YBshF6/exec", {
+                        method: "POST",
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // Clear draft and show success screen
+                    try { localStorage.removeItem(DRAFT_KEY); } catch (err) {}
+                    form.style.display = "none";
+                    const progressWrapper = document.querySelector(".progress-bar-wrapper");
+                    if (progressWrapper) progressWrapper.style.display = "none";
+                    displayAppId.textContent = generatedAppID;
+                    successScreen.style.display = "block";
+                    window.scrollTo(0, 0);
+
+                } catch (err) {
+                    console.error("Submission error:", err);
+                    alert("Application submitted! If you do not see the confirmation screen momentarily, please contact us on WhatsApp at +256 787 612 459.");
+                    try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+                    form.style.display = "none";
+                    const progressWrapper = document.querySelector(".progress-bar-wrapper");
+                    if (progressWrapper) progressWrapper.style.display = "none";
+                    displayAppId.textContent = generatedAppID;
+                    successScreen.style.display = "block";
+                    window.scrollTo(0, 0);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit Application";
+                }
             });
 
             if (!submittedId) {

@@ -1559,6 +1559,63 @@
       color: var(--text-muted);
     }
 
+    .health-support-intro {
+      max-width: 760px;
+      margin: 70px auto 0;
+      text-align: center;
+    }
+
+    .health-support-intro h3 {
+      color: var(--primary-dark);
+      font-size: 2rem;
+      line-height: 1.25;
+      margin: 8px 0 12px;
+    }
+
+    .health-support-intro p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .health-support-grid {
+      margin-top: 30px;
+    }
+
+    .health-support-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      max-width: 980px;
+      margin: 30px auto 0;
+      padding: 20px 24px;
+      border: 1px solid rgba(198, 146, 20, 0.35);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: var(--radius-md);
+      background: var(--accent-gold-light);
+      color: var(--text-muted);
+    }
+
+    .health-support-note i {
+      color: var(--accent-gold-hover);
+      font-size: 1.15rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .health-support-note p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .health-support-note strong {
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 560px) {
+      .health-support-intro h3 { font-size: 1.65rem; }
+      .health-support-note { padding: 17px; }
+    }
+
     .elder-founder {
       background: var(--primary-green);
       color: var(--text-light);
@@ -1937,6 +1994,40 @@
           <h3>Mobility Assistance</h3>
           <p>Support getting around safely and comfortably.</p>
         </div>
+      </div>
+
+      <div class="health-support-intro">
+        <span class="section-title-sub">Additional Support</span>
+        <h3>Health Support &amp; Medical Assistance</h3>
+        <p>Practical, non-clinical support that helps older adults and their families navigate everyday healthcare needs with greater confidence.</p>
+      </div>
+
+      <div class="elder-grid health-support-grid">
+        <div class="elder-card">
+          <div class="elder-icon green"><i class="fa-solid fa-hospital"></i></div>
+          <h3>Hospital &amp; Clinic Accompaniment</h3>
+          <p>Friendly accompaniment and practical assistance during hospital visits, clinic appointments, check-ups and follow-up consultations, with family updates shared with the client's consent.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon gold"><i class="fa-solid fa-pills"></i></div>
+          <h3>Medication Reminders</h3>
+          <p>Friendly reminders to follow an existing prescribed medication schedule, help keeping medication information organised and alerts to family about missed doses or refill needs.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon green"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>Wellbeing Check-ins</h3>
+          <p>Regular check-ins and observation of general wellbeing, daily routines, appetite or mood, with concerns communicated to the family or appropriate healthcare professional.</p>
+        </div>
+        <div class="elder-card">
+          <div class="elder-icon gold"><i class="fa-solid fa-house-medical"></i></div>
+          <h3>Discharge &amp; Recovery Support</h3>
+          <p>Practical help settling back at home after a hospital visit, companionship during recovery and reminders about planned follow-up appointments.</p>
+        </div>
+      </div>
+
+      <div class="health-support-note">
+        <i class="fa-solid fa-circle-info"></i>
+        <p><strong>Our approach:</strong> These services are non-clinical and do not replace a doctor, nurse or other healthcare professional. Medication support means reminders and help staying organised—not prescribing, changing doses or administering medication. Clinical procedures and nursing care must be provided by appropriately qualified professionals.</p>
       </div>
     </div>
   </section>
